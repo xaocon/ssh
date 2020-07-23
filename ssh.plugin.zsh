@@ -28,9 +28,9 @@ if [[ -f ~/.ssh/config ]]; then
 fi
 
 if [ -r ${ZDOTDIR}/users.txt ]; then
-  local _users=($(cat ${ZDOTDIR}/users.txt))
-  local users=("$_users[@]")
-  zstyle ':completion:*:(ssh|scp|sshfs|mosh):*:users' users $users
+  local _users=( "${(@f)"$(<${ZDOTDIR}/users.txt)"}" )
+  # local users=("$_users[@]")
+  zstyle ':completion:*:(ssh|scp|sshfs|mosh):*:users' users $_users
 fi
 
 zstyle ':completion:*:hosts' hosts $hosts
