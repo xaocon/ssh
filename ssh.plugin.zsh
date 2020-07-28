@@ -7,6 +7,7 @@ else
   local CACHE_FILE="${TMPDIR:-/tmp}/zsh-${UID}/ssh-hosts.zsh"
 fi
 
+# note the lack of double checking hosts
 if [[ -f ~/.ssh/config ]]; then
   if \
     [[ "$CACHE_FILE" -nt "$HOME/.ssh/config" ]] && \
